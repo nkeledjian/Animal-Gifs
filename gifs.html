@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>gifGenerator</title>
 </head>
 <body>
-    <!-- Call AJAX method - point to GIPHY URL -->
+    <!-- Buttons for outputting gifs rendered here based on user's topic choice -->
+    <div id="buttons">
+        <!-- button with attr topic-choice -->
+    </div>
+
+    <!-- Quite self explanatory - gifs will be generated in this div -->
+    <div id="gifs-here">
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $("button").on("click", function(){
+        // Empty array set for taking in user's topic
+        var topic = [""];
+        // implement prompt method to gather user input for topic
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q" + topic + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
+        // Call AJAX method - point to GIPHY URL
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function(response) {
+                var results = response.data;
+                for (var i=0; i<results.length; i++) {
+                    var gifDiv = $("<div>");
+
+                    var topicImage = $("<img>");
+                    
+                    gifDiv.prepend(topicImage);
+
+                    $("#gifs-appear-here").prepend(gifDiv);
+                }
+            });
+    });
+    </script>
+    
+
 </body>
 </html>
