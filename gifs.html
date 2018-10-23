@@ -25,14 +25,13 @@
     <form id="theme-form">
         <label for="theme-input">Enter a theme!</label>
         <input type="text" id="theme-input">
-        <br>
         <!-- Button triggers new theme to be added -->
         <input id="add-theme" type="submit" value="enter">
     </form>
 
-    <!-- Quite self explanatory - gifs will be generated in this div -->
+    <!-- Quite self explanatory - gifs will be generated here -->
     <div id="gifs-here"></div>
-
+</body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
     var themes = [];
@@ -71,8 +70,8 @@
             // call the render buttons function - 
             renderBtns();
         });
-        renderBtns();
-    
+        // renderBtns();
+        
         $("button").on("click", function() {
             var themeChoice = $(this).attr("theme-name");
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
@@ -82,7 +81,9 @@
                 method: "GET"
             })
                 .then(function(response) {
+
                     var results = response.data;
+
                     for (var i = 0; i < results.length; i++) {
                         var gifDiv = $("<div>");
 
@@ -100,6 +101,6 @@
     </script>
 
 
-</body>
+
 
 </html>
