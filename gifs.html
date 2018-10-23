@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>gifGenerator</title>
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input {
+            margin: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Buttons for outputting gifs rendered here based on user's topic choice -->
-    <div id="buttons">
+    <!-- Buttons for outputting gifs rendered here based on user's theme choice -->
+    <div id="gif-btns">
         <!-- button with attr topic-choice -->
     </div>
 
@@ -16,34 +26,81 @@
     <div id="gifs-here">
     </div>
 
+    <form id="theme-form">
+        <label for="theme-input">Enter a theme!</label>
+        <input type="text" id="theme-input">
+        <br>
+
+        <!-- Button triggers new movie to be added -->
+        <input id="add-theme" type="submit" value="topic">
+    </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-    $("button").on("click", function(){
-        // Empty array set for taking in user's topic
-        var topic = [""];
-        // implement prompt method to gather user input for topic
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q" + topic + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
-        // Call AJAX method - point to GIPHY URL
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            .then(function(response) {
-                var results = response.data;
-                for (var i=0; i<results.length; i++) {
-                    var gifDiv = $("<div>");
+    var themes = [];
 
-                    var topicImage = $("<img>");
-                    
-                    gifDiv.prepend(topicImage);
+    // FUNCTION for populating buttons
+    // CHECKOUT AJAX HOMEWORK SOLUTION
 
-                    $("#gifs-appear-here").prepend(gifDiv);
-                }
-            });
-    });
+
+    $(document).on("click", "#gif-btns", function())
+        $("#add-theme").on("click", function (event) {
+            // event.preventDefault() prevents the form from trying to submit itself.
+            // We're using a form so that the user can hit enter instead of clicking the button if they want
+            event.preventDefault();
+
+            // This line will grab the text from the input box
+            var theme = $("#theme-input").val().trim();
+            // The movie from the textbox is then added to our array
+            themes.push(theme);
+            console.log(themes);
+            for (var i = 0; i < themes.length; i++) {
+                $("#gif-btns").empty();
+                // Then dynamicaly generating buttons for each movie in the array.
+                // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
+                var a = $("<button>");
+                // Adding a class
+                a.addClass("theme");
+                console.log("a tag", a);
+                // Adding a data-attribute with a value of the movie at index i
+                a.attr("theme-name", themes[i]);
+                // Providing the button's text with a value of the movie at index i
+                a.text(themes[i]);
+                // Adding the button to the HTML
+                $("#gif-btns").append(a);
+
+            }
+            
+            // calling renderButtons which handles the processing of our movie array
+            // renderButtons();
+        });
+
+        $("button").on("click", function () {
+            // Empty array set for taking in user's theme
+
+            // implement prompt method to gather user input for theme
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q" + theme + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
+            // Call AJAX method - point to GIPHY URL
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            })
+                .then(function (response) {
+                    var results = response.data;
+                    for (var i = 0; i < results.length; i++) {
+                        var gifDiv = $("<div>");
+
+                        var themeImage = $("<img>");
+
+                        gifDiv.prepend(themeImage);
+
+                        $("#gifs-appear-here").prepend(gifDiv);
+                    }
+                });
+        });
     </script>
-    
+
 
 </body>
+
 </html>
