@@ -75,8 +75,7 @@
     
         $("button").on("click", function() {
             var themeChoice = $(this).attr("theme-name");
-
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&      limit=10";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
             // Call AJAX HTTP get request with above URL convention
             $.ajax({
                 url: queryURL,
@@ -90,8 +89,8 @@
                         var themeImage = $("<img>");
 
                         themeImage.attr("src", results[i].images.fixed_height.url);
-                        
-                        gifDiv.prepend(themeImage);
+
+                        gifDiv.append(themeImage);
 
                         $("#gifs-here").prepend(gifDiv);
                     }
