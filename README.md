@@ -1,2 +1,3 @@
 # gifGenerator
-Giphy API fun!
+This handy webpage will generate gifs of your liking. 
+Powered by Giphy API.
