@@ -73,22 +73,24 @@
         });
         renderBtns();
     
-        $("button").on("click", function () {
+        $("button").on("click", function() {
             var themeChoice = $(this).attr("theme-name");
 
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
-            // Call AJAX method - point to GIPHY URL
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&      limit=10";
+            // Call AJAX HTTP get request with above URL convention
             $.ajax({
                 url: queryURL,
                 method: "GET"
             })
-                .then(function (response) {
+                .then(function(response) {
                     var results = response.data;
                     for (var i = 0; i < results.length; i++) {
                         var gifDiv = $("<div>");
 
                         var themeImage = $("<img>");
 
+                        themeImage.attr("src", results[i].images.fixed_height.url);
+                        
                         gifDiv.prepend(themeImage);
 
                         $("#gifs-here").prepend(gifDiv);
