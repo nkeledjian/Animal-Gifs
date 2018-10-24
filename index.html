@@ -35,8 +35,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
     var themes = [];
-
-    // $(document).on("click", "#gif-btns", function() {
+    $(document).ready(function(){
         function renderBtns() {
 
             $("#gif-btns").empty();
@@ -70,34 +69,33 @@
             // call the render buttons function - 
             renderBtns();
         });
-        // renderBtns();
         
-        $("button").on("click", function() {
-            var themeChoice = $(this).attr("theme-name");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
-            // Call AJAX HTTP get request with above URL convention
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            })
-                .then(function(response) {
+            $("button").on("click", function() {
+                var themeChoice = $(this).attr("theme-name");
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
+                // Call AJAX HTTP get request with above URL convention
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                })
+                    .then(function(response) {
 
-                    var results = response.data;
+                        var results = response.data;
 
-                    for (var i = 0; i < results.length; i++) {
-                        var gifDiv = $("<div>");
+                        for (var i = 0; i < results.length; i++) {
+                            var gifDiv = $("<div>");
 
-                        var themeImage = $("<img>");
+                            var themeImage = $("<img>");
 
-                        themeImage.attr("src", results[i].images.fixed_height.url);
+                            themeImage.attr("src", results[i].images.fixed_height.url);
 
-                        gifDiv.append(themeImage);
+                            gifDiv.append(themeImage);
 
-                        $("#gifs-here").prepend(gifDiv);
-                    }
-                });
-        });
-    // }; // Document.on("click") CLOSING   
+                            $("#gifs-here").prepend(gifDiv);
+                        }
+                    });
+            });
+    });// Document.ready(function) CLOSING  
     </script>
 
 
