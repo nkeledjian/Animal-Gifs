@@ -34,54 +34,56 @@
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
-    var themes = [];
-    $(document).ready(function(){
+    $(document).ready(function() {
+        var themes = [];
         function renderBtns() {
 
-            $("#gif-btns").empty();
-            
-            // Loop through array of themes
-            for (var i = 0; i < themes.length; i++) {
-                // Then dynamicaly generate buttons for each theme in arr.
-                // $("<button>") will create the start and end tag. (<button></button>)
-                var a = $("<button>");
-                // Adding a class
-                a.addClass("theme");
-                console.log("a tag", a);
-                // Adding a data-attribute with a value of the theme at index i
-                a.attr("theme-name", themes[i]);
-                // Providing the button's text with a value of the theme at index i
-                a.text(themes[i]);
-                // Adding the button to the HTML
-                $("#gif-btns").append(a);
+                $("#gif-btns").empty();
+                
+                // Loop through array of themes
+                for (var i = 0; i < themes.length; i++) {
+                    // Then dynamicaly generate buttons for each theme in arr.
+                    // $("<button>") will create the start and end tag. (<button></button>)
+                    var a = $("<button>");
+                    // Adding a class
+                    a.addClass("theme");
+                    console.log("a tag", a);
+                    // Adding a data-attribute with a value of the theme at index i
+                    a.attr("theme-name", themes[i]);
+                    // Providing the button's text with a value of the theme at index i
+                    a.text(themes[i]);
+                    // Adding the button to the HTML
+                    $("#gif-btns").append(a);
+                }
             }
-        }
-        $("#add-theme").on("click", function (event) {
-            // event.preventDefault() prevents the form from trying to submit itself.
-            // We're using a form so that the user can hit enter instead of clicking the button if they want
-            event.preventDefault();
+            
+            $("#add-theme").on("click", function (event) {
+                // event.preventDefault() prevents the form from trying to submit itself.
+                // We're using a form so that the user can hit enter instead of clicking the button if they want
+                event.preventDefault();
 
-            // This line will grab the text from the input box
-            var theme = $("#theme-input").val().trim();
-            // The theme from the textbox is then added to our array
-            themes.push(theme);
-            console.log("themes", themes);
-            // call the render buttons function - 
-            renderBtns();
-        });
-        
+                // This line will grab the text from the input box
+                var theme = $("#theme-input").val().trim();
+                // The theme from the textbox is then added to our array
+                themes.push(theme);
+                console.log("themes", themes);
+                // call the render buttons function - 
+                renderBtns();
+            });
+        $(document).on(function() { // needed for following .on functions?
             $("button").on("click", function() {
                 var themeChoice = $(this).attr("theme-name");
-                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +         themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
+
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
                 // Call AJAX HTTP get request with above URL convention
                 $.ajax({
                     url: queryURL,
-                    method: "GET"
-                })
-                    .then(function(response) {
-
+                    method: "GET",
+                }).then(function(response) {
+                        
                         var results = response.data;
-
+                        
+                        console.log("Results", response.data);
                         for (var i = 0; i < results.length; i++) {
                             var gifDiv = $("<div>");
 
@@ -95,6 +97,7 @@
                         }
                     });
             });
+        });// Document.on(function) CLOSING  
     });// Document.ready(function) CLOSING  
     </script>
 
