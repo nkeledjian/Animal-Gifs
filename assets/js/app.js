@@ -34,11 +34,11 @@ $(document).ready(function () {
         renderBtns();
     });
     // $(document).on(function () { // needed for following .on functions?
-        $(document).on("click", "#gif-btns", function () {
+        $(document).on("click", "button", function () {
             console.log('i am clicking....')
             console.log('this thing', this)
             var themeChoice = $(this).attr("theme-name");
-            
+            console.log(themeChoice);
             var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
             // Call AJAX HTTP get request with above URL convention
             $.ajax({
