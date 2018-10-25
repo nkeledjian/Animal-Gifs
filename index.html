@@ -69,8 +69,10 @@
             // call the render buttons function - 
             renderBtns();
         });
-        $(document).on(function () { // needed for following .on functions?
-            $("button").on("click", function () {
+        // $(document).on(function () { // needed for following .on functions?
+            $(document).on("click", "#gif-btns", function () {
+                console.log('i am clicking....')
+                console.log('this thing', this)
                 var themeChoice = $(this).attr("theme-name");
 
                 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + themeChoice + "&api_key=iPmT5nea5OlsvqUmyx7SyJfzmxb6FHGy&limit=10";
@@ -96,11 +98,8 @@
                     }
                 });
             });
-        }); // Document.on(function) CLOSING  
+        // }); // Document.on(function) CLOSING  
     }); // Document.ready(function) CLOSING  
 </script>
-
-
-
 
 </html>
