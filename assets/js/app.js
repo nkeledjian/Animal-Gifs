@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // "Dogs", "Cats", "Birds", "Bears", "Llama"
+    
     var themes = ["Dogs", "Cats", "Birds", "Bears", "Llama"];
 
     function renderBtns() {
