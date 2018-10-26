@@ -1,6 +1,7 @@
-body {
+html {
     background-image: url("../images/savannah.jpg");
     background-repeat:repeat;
+    max-width: 100%;
 }
 h1 {
     font-size: 20px;

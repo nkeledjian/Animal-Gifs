@@ -47,15 +47,16 @@ $(document).ready(function () {
             console.log("Results", response.data);
 
             for (var i = 0; i < results.length; i++) {
-
+                // Render elements
+                // Div to hold img tag below
                 var gifDiv = $("<div>");
-        
+                // img tag for gifs
                 var themeImg = $("<img>");
-
+                // p tag to hold rating of gifs
                 var p = $("<p>").text("Rating: " + results[i].rating);
-
+                // create attribute - class = "gif"
                 themeImg.attr("class", "gif");
-
+                // create attribute - src = "index of result fixed height"
                 themeImg.attr("src", results[i].images.fixed_height.url);
                 
                 themeImg.attr("data-still", results[i].images.fixed_height_still.url);
@@ -63,14 +64,16 @@ $(document).ready(function () {
                 themeImg.attr("data-animate", results[i].images.fixed_height.url);
 
                 themeImg.attr("data-state", "still");
-
+                // append the img and the p tag onto the div
                 gifDiv.append(themeImg);
 
                 gifDiv.append(p);
 
                 $("#gifs-here").prepend(gifDiv);
 
-                $(".gif").on("click", function() {
+            }
+        
+            $(".gif").on("click", function() {
                 console.log("this",this);
                 var state = $(this).attr("data-state");
                 if (state === "still") {
@@ -81,11 +84,7 @@ $(document).ready(function () {
                     $(this).attr("src", $(this).attr("data-still"));
                     $(this).attr("data-state", "still");
                 }
-                });
-
-
-            }
-        
+            });
         }); // "then" AJAX function CLOSING
         
     }); // document.on("click") for AJAX CLOSING
