@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
-    var themes = ["Dogs", "Cats", "Birds", "Bears", "Llama"];
-
+    var themes = [];
+    
     function renderBtns() {
         // prevents rendering of previous theme button
         $("#gif-btns").empty();
