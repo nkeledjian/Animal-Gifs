@@ -51,7 +51,7 @@ $(document).ready(function () {
                 console.log("Results", response.data);
                 for (var i = 0; i < results.length; i++) {
                     var gifDiv = $("<div>");
-
+                    
                     var themeImg = $("<img>");
 
                     themeImg.attr("src", results[i].images.fixed_height.url);

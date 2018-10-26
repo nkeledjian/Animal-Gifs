@@ -15,8 +15,4 @@ input {
 }
 wrapper {
     display: grid;
-
-}
-div:img {
-    border: 1x solid rgba(91, 199, 235, 0.562);
 }
