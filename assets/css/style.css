@@ -1,6 +1,22 @@
-button,
-div,
-form,
+button {
+    margin: 10px;
+    display: center;
+}
+div {
+    margin: 10px;
+}
+form {
+    margin: 10px;
+    text-align: center;
+    background-color: rgba(73, 73, 238, 0.411)
+}
 input {
     margin: 10px;
+}
+wrapper {
+    display: grid;
+
+}
+div:img {
+    border: 1x solid rgba(91, 199, 235, 0.562);
 }
