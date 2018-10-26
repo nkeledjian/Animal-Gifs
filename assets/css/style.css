@@ -1,7 +1,6 @@
 body {
     background-image: url("../images/savannah.jpg");
-    width: auto;
-    height: 100%;
+    background-repeat:repeat;
 }
 h1 {
     font-size: 20px;
@@ -46,4 +45,5 @@ input {
 
 label {
     font-family: 'Oswald', sans-serif;
+    font-size: 20px;
 }
