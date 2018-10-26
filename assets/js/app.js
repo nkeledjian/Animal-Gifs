@@ -57,11 +57,11 @@ $(document).ready(function () {
                 // create attribute - class = "gif"
                 themeImg.attr("class", "gif");
                 // create attribute - src = "index of result fixed height"
-                themeImg.attr("src", results[i].images.fixed_height.url);
+                themeImg.attr("src", results[i].images.fixed_width.url);
                 
-                themeImg.attr("data-still", results[i].images.fixed_height_still.url);
+                themeImg.attr("data-still", results[i].images.fixed_width_still.url);
 
-                themeImg.attr("data-animate", results[i].images.fixed_height.url);
+                themeImg.attr("data-animate", results[i].images.fixed_width.url);
 
                 themeImg.attr("data-state", "still");
                 // append the img and the p tag onto the div

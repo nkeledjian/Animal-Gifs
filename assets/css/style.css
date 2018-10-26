@@ -1,17 +1,20 @@
 html {
     background-image: url("../images/savannah.jpg");
-    background-repeat:repeat;
+    background-repeat: repeat;
     max-width: 100%;
 }
 h1 {
-    font-size: 20px;
+    font-size: 30px;
+    color: white;
     font-family: 'Oswald', sans-serif;
     background-color: rgba(55, 55, 117, 0.63);
     text-align: center;
-    width: 100%;
+    max-width: 100%;
     float: center;
     display: center;
-    border: 2px solid rgba(0, 0, 0, 0.397);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* border: 2px solid rgba(0, 0, 0, 0.397); */
 }
 p {
     font-family: 'Oswald', sans-serif;
@@ -20,7 +23,7 @@ button {
     font-family: 'Oswald', sans-serif;
     font-weight: 500;
     margin: 10px;
-    border: 6px solid black;
+    border: 2px solid rgba(74, 118, 126, 0.658);
     border-radius: 15%;
     font-size: 14px;
     background-color: rgba(255, 255, 255, 0.671);
@@ -36,11 +39,11 @@ form {
     margin: 10px;
     text-align: center;
     background-color: rgba(0, 0, 255, 0.411);
-    border: 2px solid rgba(0, 0, 0, 0.397);
+    max-width: 100%;
 }
 input {
     margin: 10px;
-    border: 3px solid black;
+    border: 1px solid rgba(74, 118, 126, 0.658);
     font-family: 'Oswald', sans-serif;
 }
 input:hover {
@@ -54,4 +57,9 @@ input:hover {
 label {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
+}
+
+#gifs-here {
+    width: 960px;
+    display: center;
 }
