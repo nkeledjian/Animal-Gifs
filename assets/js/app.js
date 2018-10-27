@@ -23,8 +23,15 @@ $(document).ready(function () {
     $("#add-theme").on("click", function (event) {
         // event.preventDefault() prevents the form from trying to submit itself.
         event.preventDefault();
-        // This line will grab the text from the input box
+        // This line will grab the text from the input box - parses any whitespace entered by user
         var themeInput = $("#theme-input").val().trim();
+
+        // Prevent user from entering blank entry into "add a theme" field
+        // if (themeInput.length < 1 ||)
+
+        // Clear theme input after user clicks enter or "create gif button"
+        $("#theme-input").val("");
+
         // The theme from the textbox is then added to our array
         themes.push(themeInput);
         console.log("theme", themeInput);
@@ -83,7 +90,7 @@ $(document).ready(function () {
                     $(this).attr("data-state", "still");
                 }
             });
-            
+
         }); // "then" AJAX function CLOSING
         
     }); // document.on("click") for AJAX CLOSING
