@@ -27,7 +27,9 @@ $(document).ready(function () {
         var themeInput = $("#theme-input").val().trim();
 
         // Prevent user from entering blank entry into "add a theme" field
-        // if (themeInput.length < 1 ||)
+        if (themeInput.length < 1 || themes.includes(themeInput)) {
+            return
+        }
 
         // Clear theme input after user clicks enter or "create gif button"
         $("#theme-input").val("");
