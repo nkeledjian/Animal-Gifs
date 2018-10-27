@@ -17,7 +17,7 @@ $(document).ready(function () {
             // Providing the button's text with b value of the theme at index i
             b.text(themes[i]);
             // Add to HTML
-            $("#gif-btns").append(b);
+            $("#gif-btns").prepend(b);
         }
     }
     $("#add-theme").on("click", function (event) {
@@ -67,16 +67,15 @@ $(document).ready(function () {
                 gifDiv.append(themeImg);
 
                 gifDiv.append(p);
-
+                // prepend the gifDiv contents to gifs-here div
                 $("#gifs-here").prepend(gifDiv);
 
             }
-        
+            // data-state for gifs is still by default
             $(".gif").on("click", function() {
-                console.log("this",this);
                 var state = $(this).attr("data-state");
+                // since gif still by default, make gif animate
                 if (state === "still") {
-                    console.log("state === still")
                     $(this).attr("src", $(this).attr("data-animate"));
                     $(this).attr("data-state", "animate");
                 } else {
@@ -84,6 +83,7 @@ $(document).ready(function () {
                     $(this).attr("data-state", "still");
                 }
             });
+            
         }); // "then" AJAX function CLOSING
         
     }); // document.on("click") for AJAX CLOSING
