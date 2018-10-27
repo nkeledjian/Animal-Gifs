@@ -22,7 +22,6 @@ $(document).ready(function () {
     }
     $("#add-theme").on("click", function (event) {
         // event.preventDefault() prevents the form from trying to submit itself.
-        //form used so user can hit enter instead of clicking the button if they want
         event.preventDefault();
         // This line will grab the text from the input box
         var themeInput = $("#theme-input").val().trim();
