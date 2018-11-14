@@ -1,3 +1,6 @@
-# gifGenerator
-This handy webpage will generate gifs of your liking. 
+# Animal Gifs
+Discover animal gifs of your liking! 
+
+Search for an animal, get a gif button - have fun!
+
 Powered by Giphy API.
