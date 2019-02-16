@@ -1,7 +1,9 @@
 html {
     background-image: url("../images/savannah.jpg");
-    background-repeat: repeat;
-    max-width: 100%;
+    /* -webkit-background-size:cover; */
+    /* -moz-background-size:cover; */
+    /* -o-background-size:cover; */
+    background-size:auto ;
 }
 h1 {
     font-size: 30px;
